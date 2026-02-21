@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BABI NICKKY AND BABY EWAY · same page forever</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Great Vibes', cursive, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #ffd9d9 0%, #ffe4e1 50%, #fff0ed 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* floating hearts and kiss background (sweet animation) */
+        .floating-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .float-heart, .float-kiss, .float-pup {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.5;
+            animation: floatAround 18s infinite ease-in-out;
+            filter: drop-shadow(0 8px 12px rgba(255, 105, 135, 0.3));
+        }
+
+        .float-kiss {
+            font-size: 2.2rem;
+            opacity: 0.4;
+            animation-duration: 22s;
+        }
+
+        .float-pup {
+            font-size: 2.5rem;
+            opacity: 0.3;
+            animation-duration: 25s;
+        }
+
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(40px, -30px) rotate(10deg); }
+            50% { transform: translate(-20px, 50px) rotate(-8deg); }
+            75% { transform: translate(30px, -20px) rotate(5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        /* main container */
+        .main-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1200px;
+            padding: 1rem;
+        }
+
+        /* home card */
+        .home-card {
+            background: rgba(255, 250, 245, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 80px 80px 50px 50px;
+            padding: 3.5rem 4rem 4.5rem 4rem;
+            box-shadow: 0 40px 60px -20px #d46b6b,
+                        0 0 0 4px #ffffffcc inset,
+                        0 0 0 8px #ffbfbf inset;
+            width: 100%;
+            text-align: center;
+            border: 3px solid white;
+            animation: cardGlow 3s infinite alternate ease-in-out;
+            margin-bottom: 3rem;
+        }
+
+        @keyframes cardGlow {
+            0% { box-shadow: 0 40px 60px -20px #d46b6b, 0 0 0 4px #ffffffcc inset, 0 0 0 8px #ffbfbf inset; }
+            100% { box-shadow: 0 50px 80px -15px #ff8a8a, 0 0 0 6px #fff9f9 inset, 0 0 0 12px #ffa5a5 inset; }
+        }
+
+        .main-title {
+            font-size: 4.2rem;
+            font-weight: 700;
+            color: #a53f3f;
+            text-shadow: 6px 6px 0 #ffd9d9, 8px 8px 0 rgba(255, 200, 200, 0.6);
+            margin-bottom: 1.2rem;
+            letter-spacing: 2px;
+            word-break: break-word;
+            animation: titlePulse 2.5s infinite;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem 1.5rem;
+        }
+
+        .main-title span {
+            display: inline-block;
+            animation: gentleWave 3s infinite;
+            transform-origin: center;
+        }
+
+        @keyframes gentleWave {
+            0%,100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+
+        .heart-divider {
+            margin: 1.8rem 0 2.2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            font-size: 3rem;
+            color: #ff5e7c;
+            animation: dividerGlow 2s infinite alternate;
+        }
+
+        @keyframes dividerGlow {
+            from { text-shadow: 0 0 10px #ffb6c1, 0 0 20px #ffb6c1; }
+            to { text-shadow: 0 0 20px #ff4080, 0 0 40px #ff4080; }
+        }
+
+        .heart-divider i {
+            transition: transform 0.3s;
+            animation: heartbeat 1.8s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.25); color: #ff165d; }
+            50% { transform: scale(1.1); }
+        }
+
+        .story-preview {
+            font-size: 1.7rem;
+            color: #6d3b3b;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1.4rem 2rem;
+            border-radius: 110px;
+            margin-bottom: 3rem;
+            border: 3px dashed #ffa5a5;
+            line-height: 1.5;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 10px #fce1e1;
+            font-style: italic;
+        }
+
+        .story-preview i {
+            color: #c44f4f;
+            margin: 0 8px;
+        }
+
+        .kiss-button {
+            position: relative;
+            background: linear-gradient(135deg, #ff758c, #ff6f91, #ffb3b3);
+            border: none;
+            border-radius: 120px;
+            padding: 1.8rem 5rem;
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 2px 5px #a10022;
+            cursor: pointer;
+            box-shadow: 0 20px 30px -8px #f08080, 0 8px 0 #b34343, 0 0 0 4px #fff;
+            transition: all 0.2s ease;
+            letter-spacing: 2px;
+            border: 3px solid #ffe7e7;
+            overflow: visible;
+            margin-bottom: 2rem;
+            animation: buttonGlow 2s infinite alternate;
+        }
+
+        @keyframes buttonGlow {
+            from { box-shadow: 0 20px 30px -8px #f08080, 0 8px 0 #b34343, 0 0 0 4px #fff, 0 0 20px #ff9a9a; }
+            to { box-shadow: 0 20px 40px -4px #ff6868, 0 8px 0 #b34343, 0 0 0 6px #fff, 0 0 40px #ffb6b6; }
+        }
+
+        .kiss-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 28px 40px -8px #ff5f5f, 0 10px 0 #b34343, 0 0 0 5px #fff9f9;
+            background: linear-gradient(135deg, #ff8da1, #ff7c9c);
+        }
+
+        .kiss-button:active {
+            transform: translateY(5px);
+            box-shadow: 0 15px 25px -5px #ff5f5f, 0 3px 0 #b34343, 0 0 0 4px #fff;
+        }
+
+        .sub-footer {
+            margin-top: 3rem;
+            font-size: 1.8rem;
+            color: #a54747;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0.8;
+        }
+
+        .sub-footer i {
+            animation: spinSlow 8s infinite linear;
+        }
+
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* book section */
+        .book-section {
+            scroll-margin-top: 2rem;
+            width: 100%;
+        }
+
+        .book-container {
+            width: 100%;
+            background: rgba(255, 248, 245, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 48px 48px 32px 32px;
+            box-shadow: 0 30px 50px -20px rgba(240, 128, 128, 0.5),
+                        0 0 0 2px #fff9f2 inset,
+                        0 0 0 4px #ffd9ce inset;
+            padding: 2rem 2rem 1.8rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffddd3;
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 12px 18px -12px #eea0a0;
+            border: 2px solid white;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-icon {
+            font-size: 2rem;
+            color: #b95b5b;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+            position: relative;
+        }
+
+        .nav-icon:hover {
+            color: #a13b3b;
+            transform: translateY(-3px) scale(1.08);
+        }
+
+        .nav-icon:active {
+            transform: scale(0.95);
+        }
+
+        .heart-badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            font-size: 1.2rem;
+            color: #ff4080;
+            filter: drop-shadow(0 2px 3px gold);
+            animation: subtleWiggle 2s infinite;
+        }
+
+        @keyframes subtleWiggle {
+            0%,100%{ transform: rotate(0deg); }
+            25%{ transform: rotate(8deg); }
+            75%{ transform: rotate(-8deg); }
+        }
+
+        .title-area {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: white;
+            padding: 0.2rem 2.2rem;
+            border-radius: 60px;
+            color: #ad4d4d;
+            box-shadow: 0 6px 0 #ffb6b6;
+            border: 2px solid #ffd9d9;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .title-area i {
+            font-size: 2rem;
+            color: #ff6f91;
+        }
+
+        .book-pages {
+            background: #fffefc;
+            border-radius: 40px 40px 24px 24px;
+            padding: 2.8rem 3rem;
+            box-shadow: inset 0 -4px 0 #f1cfcf, 0 20px 30px -15px rgba(252, 141, 141, 0.4);
+            min-height: 460px;
+            max-height: 70vh;
+            overflow-y: auto;
+            border: 3px solid white;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        .book-pages::-webkit-scrollbar {
+            width: 14px;
+        }
+        .book-pages::-webkit-scrollbar-track {
+            background: #ffe4e0;
+            border-radius: 20px;
+        }
+        .book-pages::-webkit-scrollbar-thumb {
+            background: #ffa7a7;
+            border-radius: 20px;
+            border: 4px solid #ffe4e0;
+        }
+        .book-pages::-webkit-scrollbar-thumb:hover {
+            background: #f58b8b;
+        }
+
+        .chapter {
+            display: none;
+            animation: pageFade 0.5s ease;
+        }
+
+        .chapter.active-chapter {
+            display: block;
+        }
+
+        @keyframes pageFade {
+            0% { opacity: 0.3; transform: translateY(6px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .chapter h2 {
+            font-size: 2.6rem;
+            color: #a14141;
+            border-left: 10px solid #ffbeb6;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            text-shadow: 3px 3px 0 #ffeeec;
+        }
+
+        .chapter-content {
+            font-size: 1.22rem;
+            line-height: 1.7;
+            color: #3e2e2e;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background: #fffbfb;
+            padding: 0.8rem 1.2rem;
+            border-radius: 28px;
+            border: 2px dashed #ffc6c6;
+        }
+
+        .chapter-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem 1rem;
+            margin-top: 2rem;
+        }
+
+        .chapter-dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 60px;
+            background: #ffe3dd;
+            border: 3px solid white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #8f4a4a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #dba1a1;
+        }
+
+        .chapter-dot.active {
+            background: #ffb2a5;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #b15353;
+        }
+
+        .chapter-dot:hover {
+            background: #ffc9be;
+            transform: scale(1.06);
+        }
+
+        .puppy-counter {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            border-radius: 40px;
+            padding: 0.4rem 1.2rem;
+            border: 2px solid #ffc1c1;
+        }
+
+        .puppy-counter span {
+            font-weight: 700;
+            color: #ad4d4d;
+            font-size: 1.4rem;
+        }
+
+        .footer-note {
+            margin-top: 1.2rem;
+            font-size: 1.25rem;
+            color: #b45b5b;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* kiss container */
+        .kiss-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .kiss-emoji {
+            position: absolute;
+            font-size: 3.5rem;
+            filter: drop-shadow(0 10px 15px hotpink);
+            animation: kissFloat 2s ease-out forwards;
+            z-index: 10000;
+        }
+
+        @keyframes kissFloat {
+            0% { transform: scale(0.4) translateY(0) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.3) translateY(-120px) rotate(15deg); opacity: 0.9; }
+            100% { transform: scale(0.8) translateY(-250px) rotate(25deg); opacity: 0; }
+        }
+
+        .heart-trail {
+            position: fixed;
+            pointer-events: none;
+            font-size: 2rem;
+            z-index: 9999;
+            animation: trailFade 1.3s ease-out forwards;
+        }
+
+        @keyframes trailFade {
+            0% { opacity: 0.9; transform: scale(0.7) rotate(0deg); }
+            100% { opacity: 0; transform: scale(2) rotate(20deg); }
+        }
+
+        .floating-heart {
+            position: fixed;
+            font-size: 1.8rem;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 999;
+            animation: floatUp 4s ease-out forwards;
+            filter: drop-shadow(0 4px 6px rgba(255, 120, 160, 0.3));
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.6); opacity: 0.8; }
+            100% { transform: translateY(-180px) scale(1.4); opacity: 0; }
+        }
+
+        @media (max-width: 700px) {
+            .home-card { padding: 2.5rem 1.5rem; }
+            .main-title { font-size: 3rem; }
+            .kiss-button { font-size: 1.8rem; padding: 1.4rem 2rem; }
+            .story-preview { font-size: 1.3rem; }
+            .navbar { flex-direction: column; }
+            .chapter h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- floating background elements -->
+    <div class="floating-bg" id="floatingBg"></div>
+
+    <!-- kiss container for effects -->
+    <div class="kiss-container" id="kissContainer"></div>
+
+    <!-- floating heart container (for book effects) -->
+    <div id="heartContainer"></div>
+
+    <div class="main-wrapper">
+        <!-- HOME PAGE CARD -->
+        <div class="home-card">
+            <div class="main-title">
+                <span>BABI</span>
+                <span>NICKKY</span>
+                <i class="fas fa-heart" style="color: #ff4d6d; font-size: 4rem; margin: 0 10px;"></i>
+                <span>BABY</span>
+                <span>EWAY</span>
+            </div>
+
+            <div class="heart-divider">
+                <i class="fas fa-paw"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-paw"></i>
+            </div>
+
+            <div class="story-preview">
+                <i class="fas fa-quote-left"></i> 
+                from garden bench to forever home · fifty-seven years of choosing each other 
+                <i class="fas fa-quote-right"></i>
+                <div style="margin-top: 10px; font-size: 1.4rem;">
+                    ✦ midnight talks · soft confessions · always in every way ✦
+                </div>
+            </div>
+
+            <button class="kiss-button" id="startButton">
+                <i class="fas fa-heart" style="margin-right: 15px;"></i>
+                Start to read baby eway ko
+                <i class="fas fa-heart" style="margin-left: 15px;"></i>
+            </button>
+
+            <div class="sub-footer">
+                <i class="fas fa-dog"></i>
+                <span>🐾 same page, same heart 🐾</span>
+                <i class="fas fa-dog"></i>
+            </div>
+        </div>
+
+        <!-- BOOK SECTION (same page story) -->
+        <div class="book-section" id="bookSection">
+            <div class="book-container">
+                <!-- functional icon bar -->
+                <div class="navbar">
+                    <div class="nav-left">
+                        <div class="nav-icon" id="homeBtn" title="first chapter (home)"><i class="fas fa-home"></i></div>
+                        <div class="nav-icon" id="prevChapter" title="previous chapter"><i class="fas fa-chevron-left"></i></div>
+                        <div class="nav-icon" id="nextChapter" title="next chapter"><i class="fas fa-chevron-right"></i></div>
+                        <div class="nav-icon pup-emoji-click" id="pupClick" title="click me! sweet puppy">
+                            <i class="fas fa-dog"></i>
+                            <span class="heart-badge" id="pupHeartBadge">❤️</span>
+                        </div>
+                    </div>
+                    <div class="title-area">
+                        <i class="fas fa-paw"></i> same page <i class="fas fa-heart" style="color: #ff98a9;"></i>
+                    </div>
+                    <div class="nav-right">
+                        <div class="puppy-counter" id="pupCounter">
+                            <i class="fas fa-puppy" style="font-size: 1.8rem;"></i>
+                            <span id="pupCountDisplay">0</span> <span style="font-size: 1rem;">licks</span>
+                        </div>
+                        <div class="nav-icon" id="randomHeart" title="spread heart effect"><i class="fas fa-heart-circle-plus"></i></div>
+                        <div class="nav-icon" id="lastChapterShortcut" title="final chapter"><i class="fas fa-book-open"></i></div>
+                    </div>
+                </div>
+
+                <!-- book pages (chapter display) -->
+                <div class="book-pages" id="bookPages"></div>
+
+                <!-- chapter dot navigation -->
+                <div class="chapter-nav" id="chapterNav"></div>
+
+                <div class="footer-note">
+                    <span>🐶 always, in every way 💞</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ---------- full story chapters (25 chapters) ----------
+            const chapters = [
+                { title: "1 · When Hearts First Noticed", content: `The afternoon sun filtered through the leaves of the old acacia tree outside the university library, casting dancing shadows on the pavement where students hurried between classes. Babi Nickky sat on the worn wooden bench, reviewing his notes for the third time, though his mind wasn't truly focused on the words in front of him.\n\nHe had chosen this spot for its quietness, away from the crowded hallways and noisy cafeteria. The bench faced a small garden that the university had planted years ago—roses that bloomed in careful rows, bordered by stones painted white by volunteers. It was peaceful here, and Nickky valued peace.\n\nThen she walked past.\n\nNot dramatically. Not in slow motion like in the movies his sister loved to watch. Baby Eway simply walked along the garden path, a book pressed against her chest, her hair catching the light in a way that made Nickky look up without thinking.\n\nShe stopped near the roses, tilting her head to examine a bloom that had opened overnight. Her expression shifted into something soft and wondering, as if this small flower held the most beautiful secret in the world. And then she smiled—not at anyone, just at the flower, at the moment, at the simple pleasure of noticing something lovely.\n\nSomething inside Nickky quietly awakened.\n\nIt wasn't loud or dramatic. It was gentle, like a whisper only his heart could hear. He felt drawn to her calm energy, the warmth she carried so naturally. She hadn't spoken a word, yet he felt like he had learned something important about her.\n\nBaby Eway sensed someone watching and turned. Their eyes met across the garden—just for a moment, just long enough for her to notice the stranger on the bench, with his notebooks and his steady gaze. She offered a small, polite smile before continuing on her way.\n\nBut she thought about him later. There was something steady about him—something safe. He hadn't looked away quickly or pretended not to notice her. He simply existed in a way that felt comforting.\n\nThe next day, Nickky returned to the same bench at the same time. He told himself it was because the lighting was good for reading. But when he saw her again—this time sitting on the grass, actually reading the book she had carried yesterday—his heart did something unfamiliar.\n\nHe gathered his courage and approached. "Is that spot taken?" he asked, gesturing to the grass near her.\n\nBaby Eway looked up, recognition flickering in her eyes. "No, it's free."\n\n"I'm Nickky," he said, sitting carefully. "I saw you here yesterday. With the roses."\n\n"I remember." She closed her book, marking her page with a finger. "I'm Eway. You're the bench person."\n\nHe laughed—a real laugh, surprised and genuine. "Bench person. That's me."\n\nThey talked as the afternoon stretched around them. About books and classes, about the garden and who maintained it—volunteers, she knew, because she sometimes helped on weekends. About small things that somehow didn't feel small at all. Their conversation flowed easily, naturally, like water finding its way downhill.\n\nWhen she laughed at his awkward joke about cafeteria food, Nickky felt something settle inside him. And when he mentioned his favorite childhood memory—catching fireflies with his grandfather—Eway leaned forward with genuine interest, asking questions that showed she was truly listening.\n\nThat day ended without promises or confessions. They simply said goodbye when the sun began to sink, each going home with homework unfinished and minds elsewhere.\n\nBut both felt different.\n\nIt wasn't infatuation. It was recognition. As if their hearts had quietly met long before their eyes did. Love hadn't spoken yet, but it had already begun growing, slow and certain, in the space between two strangers who somehow felt like home.` },
+                { title: "2 · Soft Conversations at Midnight", content: `The first message came three days later. Nickky had found her social media profile through a mutual friend—or at least, that's what he told himself. In truth, he had searched for her name with trembling fingers, hoping she would appear.\n\nShe did. And she accepted his follow request within hours.\n\n*Hey, it's Nickky. From the garden. How's your book?*\n\nSimple. Safe. He stared at the message for five minutes before pressing send.\n\nHer reply came while he was eating dinner. *Almost finished. The main character just made a terrible decision and I'm emotionally compromised.*\n\nHe laughed out loud, earning a curious look from his mother. *Should I prepare tissues for the end?*\n\n*Definitely. This is the kind of book that ruins your whole week.*\n\nThat first conversation stretched into the evening, then into the night. By midnight, they had moved from books to music to childhood memories to fears about the future. Nickky learned that Eway's favorite comfort food was champorado on rainy days. Eway discovered that Nickky got nervous before exams and always chewed his pen cap without realizing it.\n\n"You're still awake?" his roommate whispered from the other bed.\n\n"Go to sleep," Nickky whispered back, phone screen glowing under his blanket.\n\n"You've been smiling at that phone for three hours."\n\n"I have not."\n\n"You really have."\n\nThe second night, they talked until 2 AM. The third night, until 3. Soon, midnight conversations became their ritual—a sacred space where the world grew quiet and only their voices mattered.\n\nBaby Eway found herself sharing things she rarely told anyone. Her fear that she wasn't smart enough for her demanding course. The way her chest tightened when her parents argued. Her dream of opening a small bookstore someday, filled with worn armchairs and cats that napped in sunbeams.\n\nNickky listened—not just to reply, but to understand. He remembered every detail. When she mentioned being nervous about an upcoming presentation, he sent her a good luck message before she even woke up. When she casually mentioned loving a specific type of chocolate, he left one on her favorite library table with a note that just said *"For emergency study breaks."*\n\nThat kind of attention made Baby Eway feel seen in a way she had never experienced before.\n\nSometimes they talked about nothing. Silly debates about which superhero had the best movies. Whether pineapple belonged on pizza—she said yes, he pretended to be horrified. Stories about embarrassing moments that made them both laugh until their stomachs hurt.\n\nOther times, their conversations deepened. They spoke about what they wanted from life, what scared them, what kept them awake at night. Nickky admitted he sometimes felt pressure to be the person everyone expected him to be. Eway confessed she worried she would disappoint the people who believed in her.\n\nBut no matter the topic, their conversations felt safe. There was no judgment, no pressure to be perfect. Just two hearts learning each other slowly, carefully, beautifully.\n\nBetween every "Are you okay?" and every "I'm here," love quietly deepened. It wasn't rushed. It wasn't forced. It simply grew stronger with every honest word shared in the quiet hours of the night, when the rest of the world slept and two people discovered they were no longer strangers.` },
+                { title: "3 · Learning to Stay", content: `The first difficult moment came six weeks into their friendship.\n\nBaby Eway had been quiet for three days. Her messages grew shorter, then stopped entirely. Nickky gave her space at first, understanding that everyone needed time alone. But by the third evening, worry replaced patience.\n\n*Hey,* he typed carefully. *No pressure to reply. Just wanted you to know I'm here if you need anything. Even if you just want someone to sit with in silence.*\n\nAn hour passed. Then two. He was preparing for sleep when his phone buzzed.\n\n*Can you come to the garden?*\n\nHe was there in fifteen minutes, breathless from running across campus.\n\nEway sat on the grass where they first spoke, knees drawn to her chest. Even in the dim light, he could see she had been crying.\n\n"I didn't want to burden you," she whispered when he sat beside her.\n\n"You're not a burden. You're my friend."\n\nShe told him then—about the family argument that had erupted, about words said in anger that couldn't be taken back, about the exhaustion of always being the strong one for everyone else. She didn't try to hide her tears or apologize for them.\n\nNickky didn't try to fix her emotions or silence her tears. He didn't offer solutions or platitudes. He simply stayed.\n\nHe sat beside her on the cold grass, close enough that their shoulders almost touched. When she shivered, he removed his jacket and draped it over her. When she talked, he listened. When she fell silent, he stayed silent too.\n\nThey sat there until the campus lights flickered off, signaling the late hour. Eway finally looked at him with swollen eyes.\n\n"You didn't have to come."\n\n"I wanted to."\n\n"Why?"\n\nHe considered the question carefully. "Because you matter to me. Not just the happy parts of you. All of you."\n\nThat simple act of staying meant more than grand gestures ever could. It told Baby Eway that she didn't need to hide her sadness to be loved. She didn't need to be cheerful all the time. She was allowed to be human.\n\nIn the weeks that followed, the roles reversed. When Nickky received disappointing news about a scholarship he had worked toward for months, he called Eway without thinking.\n\n"I didn't get it," he said, voice cracking.\n\n"Where are you?"\n\n"Same bench."\n\nShe arrived with takeout from his favorite place and no expectations that he would want to talk. They ate in silence, and when he finally spoke about his disappointment, she listened the way he had listened—without judgment, without rushing to fix things.\n\n"You'll find another way," she said quietly. "And I'll be here while you do."\n\nThey learned that love isn't about perfection. It's about choosing each other, especially on difficult days. And every time they chose to stay instead of walking away, their bond grew deeper and more unbreakable.` },
+                { title: "4 · Love Without Masks", content: `Months passed. Their friendship deepened into something neither had named aloud, though both felt it growing between them like a quiet, steady flame.\n\nOne evening, as rain tapped against the window of the campus coffee shop where they often studied together, Eway set down her pen and looked at him directly.\n\n"Can I tell you something I've never told anyone?"\n\nNickky closed his book, giving her his full attention. "Always."\n\nShe took a shaky breath. "Before college, I wasn't okay. For a long time, I wasn't okay at all. I pretended so well that even my family didn't notice. But inside, I was drowning."\n\nShe spoke about the darkness that had visited her during her final year of high school. The mornings when getting out of bed felt impossible. The way she learned to smile even when everything hurt. The counselor she eventually saw, the medication she still took, the careful way she managed her mental health every single day.\n\n"I'm telling you this because... because you deserve to know who I really am. All of me. Not just the parts that are easy to love."\n\nNickky reached across the table and took her hand. Not with pity. With understanding.\n\n"Thank you for trusting me," he said quietly. "That means more than you know."\n\nThen he told her his own truth—the pressure he carried from a family who saw him as their only hope for a better future. The anxiety that sometimes kept him awake at night, calculating and recalculating whether he was doing enough. The fear that no matter how hard he tried, he would never be enough.\n\n"I've been pretending too," he admitted. "That I have it all figured out. That I'm not scared."\n\nEway squeezed his hand. "We're quite a pair, aren't we?"\n\n"Perfectly imperfect," he agreed.\n\nTheir love became a space where vulnerability wasn't weakness. It was courage. They learned that unconditional love means accepting someone fully—their strengths and their flaws, their laughter and their tears, their light and their shadow.\n\nThey didn't try to change each other. They didn't demand perfection. Instead, they offered patience, kindness, and reassurance. In a world that constantly asks people to be better, stronger, and different, they allowed each other to simply be real.\n\nThat authenticity became the foundation of their sweetest love.\n\nA few weeks later, sitting on their bench in the garden as autumn leaves drifted around them, Nickky turned to her.\n\n"I love you," he said simply. "Not the version of you that's always strong. Not the version that never struggles. I love you—all of you. The beautiful and the broken, the confident and the scared. I love every part."\n\nEway's eyes filled with tears, but she was smiling. "I love you too. Exactly as you are."\n\nThey kissed for the first time as the sun set behind them, painting the sky in shades of gold and rose. It wasn't dramatic or perfect—their noses bumped slightly, and they both laughed before trying again. But it was real. It was them. And that made it beautiful.` },
+                { title: "5 · Choosing Each Other Again", content: `The first real fight happened eight months into their relationship.\n\nIt started over something small—a misunderstanding about plans for the weekend. Nickky thought they had agreed to visit his family; Eway had planned a study session for an important exam. By the time they realized the miscommunication, frustration had already taken root.\n\n"I just wish you had told me earlier," Eway said, her voice tighter than usual.\n\n"I thought we discussed it. I even wrote it down."\n\n"Well, I didn't see it written down anywhere."\n\n"So now I'm lying?"\n\n"I didn't say that."\n\nThe conversation spiraled from there, each sentence adding another layer of hurt. By the time they parted that evening, they hadn't resolved anything. For the first time since meeting, they didn't text goodnight.\n\nNickky lay awake, staring at the ceiling, replaying every word. Pride whispered that he was right. But something deeper—something love had taught him—whispered differently.\n\nThe next morning, he showed up at her dorm with coffee and her favorite pastry. His eyes were tired; clearly, he hadn't slept well either.\n\n"I'm sorry," he said before she could speak. "Not for having a different memory of our conversation. But for how I handled it. For getting defensive instead of listening. For not calling last night to fix things."\n\nEway's defensive walls crumbled. "I'm sorry too. I was stressed about my exam and took it out on you. I should have been clearer about my schedule."\n\nThey sat together on the steps outside her building, drinking coffee in the early morning quiet.\n\n"Can we make a rule?" Nickky asked. "When things get hard, we don't go to sleep angry. Even if we can't fix it immediately, we at least say 'I love you' before sleeping."\n\nEway nodded. "And we remember it's us against the problem, not us against each other."\n\nThat became their foundation. Not the absence of conflict—it was their refusal to give up.\n\nMore challenges came, as they always do in any real relationship. A misunderstanding about a friend that sparked jealousy. A stressful period when both were overwhelmed and had little energy to give. A moment when Nickky's family questioned whether Eway was "right" for him, causing wounds that took time to heal.\n\nInstead of letting pride win, they chose humility. Instead of allowing anger to grow, they chose conversation. Nickky learned to apologize sincerely when he made mistakes. Eway learned to express her feelings honestly instead of keeping them inside.\n\nThey understood that love is not sustained by feelings alone. It survives because of effort. Because of daily decisions to stay, to forgive, and to try again. Each time they worked through a difficulty, they felt stronger. Their trust deepened.\n\nChoosing each other wasn't a one-time promise. It was a daily action. A quiet commitment made every morning. And with every choice to love again, their hearts intertwined more tightly, building a love that was patient, enduring, and beautifully unconditional.` },
+                { title: "6 · A Safe Place Called Us", content: `Graduation approached, bringing with it the uncertainty of what came next. Job applications, career decisions, the possibility of different cities—all loomed like storms on the horizon.\n\nBut in the midst of that uncertainty, they discovered something profound.\n\nLove had slowly become a place for them. Not a location, but a feeling they carried wherever they went.\n\nFor Baby Eway, Nickky's presence felt like rest. When the world grew loud with expectations and deadlines, he became her quiet. When her thoughts grew heavy with worry, his voice grounded her. He never rushed her healing. He allowed her to move at her own pace, always reminding her she wasn't alone.\n\nOne evening, after a particularly difficult job interview that left her feeling inadequate, she curled up beside him on his small apartment couch.\n\n"What if I'm not good enough?" she whispered. "What if no one hires me?"\n\nNickky wrapped his arms around her. "Then we figure out the next step together. You're not alone in this, Eway. You never have been."\n\nFor Babi Nickky, Eway became his peace. When his own job search yielded rejection after rejection, her belief in him never wavered. She celebrated small victories—an interview invitation, a positive email—as if they were her own.\n\n"You're going to find your place," she told him firmly. "And until then, you have a place with me."\n\nHer smile softened his hardest days. Being with her reminded him of who he wanted to be—not just successful, but kind. Not just accomplished, but present.\n\nTogether, they built a safe place where love didn't judge or demand. They could be tired, messy, emotional, or silent—and still be accepted. Their love didn't need constant excitement. It thrived in comfort. In shared meals from his tiny kitchen. In late-night talks on her apartment balcony. In simple moments that felt full—a shared look across a crowded room, a hand reached for without thinking, a laugh that erupted over something only they found funny.\n\n"Us" became their refuge. A space where hearts rested, healed, and felt truly at home.\n\nWhen job offers finally came—his in the city, hers two hours away—they didn't panic. They sat together, looked at the options, and made a plan. Weekends together. Daily calls. A shared calendar and a shared commitment.\n\n"It won't be easy," Eway said.\n\n"Nothing worthwhile ever is," Nickky replied. "But we're worth it. We've always been worth it."` },
+                { title: "7 · Growing Side by Side", content: `Distance tested them in ways they hadn't anticipated.\n\nThe first month apart was the hardest. Nickky's new job demanded long hours and intense focus. Eway's position required her to prove herself in an unfamiliar environment. Their carefully planned calls sometimes got canceled. Their weekend visits sometimes felt too short.\n\nBut love didn't stop them from growing—it encouraged it.\n\nThey understood that loving someone also meant supporting their individual journeys. They dreamed together, but they also respected each other's paths. Nickky cheered for Eway's ambitions, even when they required patience and sacrifice. When she received a promotion that meant even more responsibility, he was the first person she called.\n\n"I'm so proud of you," he said, genuine joy in his voice. "You earned this."\n\nEway believed in Nickky's goals, even when success felt far away. When he considered leaving his stable job to pursue a riskier opportunity that aligned with his passion, she didn't hesitate.\n\n"If it's what you want, I'm with you. We'll figure out the rest."\n\nThey learned that growth sometimes meant discomfort. There were moments when they changed—when new experiences shaped them into slightly different people than when they first met. New perspectives. New priorities. New dreams.\n\nBut instead of drifting apart, they adjusted together. They talked openly about how they were evolving, making sure no one felt left behind.\n\n"I feel like I'm becoming someone new sometimes," Eway admitted during one of their long phone calls. "It scares me a little."\n\n"Tell me about who you're becoming," Nickky said. "I want to know her too."\n\nGrowth wasn't about becoming someone else. It was about becoming better—together. They celebrated progress, no matter how small. A difficult project completed. A fear overcome. A skill mastered.\n\nSide by side, even from a distance, they grew stronger, wiser, and more patient. Love wasn't holding each other back. It was pushing them forward, hand in hand, toward the people they were meant to become.\n\nOne evening, after a particularly challenging week, Nickky sent Eway a photo of a beautiful sunset from his city. Beneath it, he wrote: *"Watching this, I wished you were here. But I also realized—every sunset I see, I think of you. And that makes them all beautiful."*\n\nEway saved that photo. Years later, it would still make her smile.` },
+                { title: "8 · Loving Through Storms", content: `Two years into their long-distance arrangement, the biggest storm yet arrived without warning.\n\nNickky's company underwent restructuring, and his position was eliminated. The news came on a Tuesday, delivered in a cold email that offered no explanation and little severance.\n\nEway received the call while at work and immediately excused herself to an empty conference room.\n\n"I don't know what to do," Nickky said, his voice hollow in a way she had never heard before. "I gave them everything. Two years of my life. And they just... cut me loose."\n\nHer heart broke for him. But she kept her voice steady.\n\n"Come here this weekend. We'll figure it out together."\n\nHe arrived on Friday, looking thinner than when she had seen him last month. The confidence that usually radiated from him had dimmed. They sat on her small balcony as he poured out his fears—financial insecurity, damaged confidence, the shame of having to explain this to his family.\n\nEway listened without interrupting. When he finally fell silent, she took his hand.\n\n"You are not your job. You are not your bank account. You are the most capable, resilient person I know. And this? This is just a chapter. Not the whole story."\n\nBut storms don't pass quickly. The weeks that followed tested them in new ways. Nickky's job search yielded nothing but rejections. His savings dwindled. His mood darkened.\n\nThere were moments when he pushed her away, convinced he was dragging her down. There were moments when Eway felt the weight of carrying both their hopes. They argued about money, about the future, about whether their plan to eventually live in the same city was still realistic.\n\nWords sometimes hurt. Silence sometimes lingered longer than it should.\n\nBut even in those storms, love never disappeared.\n\nNickky learned to pause instead of reacting. When frustration rose, he chose calm. When he wanted to withdraw, he forced himself to reach out instead.\n\nEway learned to speak her pain instead of hiding it. When she felt overwhelmed, she told him honestly instead of pretending everything was fine. She trusted that he would listen, not leave.\n\nThey discovered that storms didn't mean failure. They were lessons. Every difficult conversation taught them how to love better, how to communicate more clearly, how to protect each other's hearts even when their own felt bruised.\n\nInstead of walking away, they reached for each other. They apologized. They forgave. They learned.\n\nLove became resilient. Not fragile. Not temporary.\n\nWhen Nickky finally received a job offer—one that paid less than before but offered more meaning—they celebrated not with grand gestures, but with quiet gratitude on another balcony conversation.\n\n"I couldn't have made it through without you," he said honestly.\n\n"You didn't have to. That's the whole point."\n\nWhen the storms passed, they stood stronger than before. Holding each other with renewed understanding, they realized that unconditional love isn't proven in calm moments—but in the decision to stay when things get hard.` },
+                { title: "9 · The Beauty of Effort", content: `By their fourth year together, with distance finally closed and a shared apartment in the city, they understood something profound about love.\n\nIt was never just a feeling between them. It was effort—shown daily in small, meaningful ways.\n\nNickky showed love by being consistent. He still checked in during busy days. He still remembered the details she mentioned—a difficult meeting, a friend's birthday, a craving for a specific dessert. He made sure Eway always felt valued, not because he had to, but because he wanted to.\n\nOne evening, after a particularly draining day at work, Eway came home to find the apartment cleaned, her favorite takeout arranged on the table, and a note that simply said: *"You work so hard. Tonight, you rest."*\n\nShe cried. Not from sadness, but from the overwhelming feeling of being seen.\n\nEway showed love through care. She learned his patterns—when he needed quiet, when he needed conversation, when he needed someone to simply sit beside him. She offered encouragement without being asked, warmth without condition.\n\nWhen Nickky's grandmother passed away, Eway didn't try to find the right words. She simply held him while he cried, made sure he ate, handled the phone calls he couldn't face. She loved him through grief the way he had loved her through darkness years before.\n\nThey learned that effort doesn't have to be grand to be powerful. Sometimes love looked like listening after a long day. Sometimes it was choosing patience instead of pride. Sometimes it was simply saying, "I'm here," and meaning it with every fiber of your being.\n\nEven on days when energy was low and emotions felt heavy, they still tried. They understood that love survives not because everything is easy, but because both people are willing to keep showing up.\n\nEffort became their love language. A promise without words. And with every effort given, trust deepened. Their relationship became something solid—built not on temporary emotions, but on steady, intentional love.\n\nOne ordinary Tuesday, Eway woke up to find Nickky had already left for work. But on her nightstand, a fresh cup of coffee sat beside a handwritten note: *"I saw you smile in your sleep this morning. That's how I want to start every day—knowing you're happy, even in dreams."*\n\nShe kept that note in the pages of her favorite book for years.` },
+                { title: "10 · A Love That Heals", content: `Before meeting each other, both carried quiet wounds.\n\nBaby Eway still had moments when she doubted her worth. The darkness that had visited during high school never fully disappeared—it simply became manageable, a shadow she had learned to live with. Some days were harder than others, days when the old voices whispered that she wasn't good enough, didn't deserve happiness, would eventually be abandoned like she feared.\n\nOn those days, Nickky noticed before she said anything. He didn't panic or try to fix her. He simply adjusted—brought tea instead of coffee, suggested quiet evenings instead of social plans, held her a little longer without asking questions.\n\n"You're not too much," he reminded her during one particularly difficult evening. "You're not broken. You're human, and I love every part of you. The easy parts and the hard parts."\n\nHis gentle consistency healed her in ways she hadn't thought possible. He reminded her that she didn't need to earn love. She deserved it simply by being herself. With him, she learned to trust again—not just him, but herself.\n\nBabi Nickky carried his own wounds. The pressure to be enough still visited, especially during quiet moments. The fear that he would fail the people who believed in him. The anxiety that whispered he was one mistake away from losing everything.\n\nEway healed him by believing in him without conditions. She saw his effort, his heart, his sincerity. When he doubted, she stood firm in her faith in him.\n\n"I don't love you for what you achieve," she told him once. "I love you for who you are. That doesn't change based on your productivity."\n\nHealing didn't happen overnight. It came slowly, through countless moments of reassurance, patience, and shared vulnerability. Together, they learned that love doesn't rush healing—it walks beside it.\n\nThey created a space where old wounds could breathe, could be acknowledged without shame. Where they could say "I'm struggling today" without fear of disappointment. Where they could be weak together and somehow find strength in that honesty.\n\nAnd as they healed, their love grew deeper, rooted in compassion and understanding that only comes from walking through darkness together and finding light on the other side.\n\nOne night, lying in bed as rain tapped against the window, Eway turned to Nickky. "Before you, I didn't think anyone could love all of me. I thought I had to hide the broken parts."\n\nNickky pulled her closer. "The broken parts are where the light gets in. They made you who you are. And who you are is someone I love more than I knew it was possible to love."\n\nIn the darkness, she smiled. And for the first time in years, the shadows felt a little lighter.` },
+                { title: "11 · Gentle Thoughts of Forever", content: `Five years into their relationship, on a quiet evening in their shared apartment, the topic of forever arose naturally.\n\nThey were cooking dinner together—a chaotic process that involved Eway directing and Nickky pretending to follow directions while doing his own thing. Music played softly from a speaker. Rain tapped against the window. It was ordinary in every way.\n\n"Do you ever think about the future?" Eway asked, stirring the sauce.\n\n"All the time. Usually about what's for dinner."\n\nShe laughed and threw a dish towel at him. "I mean really think about it. About us. About where we'll be in ten years. Twenty."\n\nNickky paused, considering the question seriously. "I think about growing old with you," he said quietly. "I think about mornings when we're gray and slow, still making coffee together. I think about reading on the same couch, still reaching for your hand without thinking."\n\nEway's eyes softened. "That's exactly what I think about. Not anything dramatic. Just... us. Still us."\n\nForever didn't feel overwhelming when they thought about it together. It felt calm. It felt safe. Nickky imagined a lifetime of choosing Baby Eway—not just in happiness, but in every season of life. Sickness and health, richer and poorer, better and worse—the traditional vows suddenly made perfect sense.\n\nBaby Eway imagined growing old beside Nickky, sharing ordinary days that felt extraordinary simply because they were together. Sunday mornings with newspapers and slow conversations. Holiday traditions they would build and pass on. The quiet comfort of someone who knew you completely and stayed anyway.\n\nThey didn't rush promises. They allowed love to unfold naturally. Forever wasn't about pressure—it was about certainty. A quiet knowing that no matter how life changed, their commitment would remain.\n\nThey spoke about the future with hope, not fear. Love wasn't about control or expectations. It was about partnership. About walking forward together, whatever the road looked like.\n\n"I want forever with you," Nickky said later that night, as they lay in bed with the rain still falling outside. "Not because it's easy or guaranteed. Because I can't imagine choosing anyone else. Ever."\n\nEway turned to face him, her hand finding his in the darkness. "Me neither. You're my person. You've been my person since that garden bench."\n\nForever, to them, wasn't dramatic. It was gentle. Built on trust, effort, and deep affection. And that gentleness made it beautiful.\n\nThat night, they fell asleep holding hands, the rain continuing its gentle rhythm outside—a lullaby for two people who had found their forever in each other.` },
+                { title: "12 · Holding Hands Through Time", content: `Seven years. Eight. Nine.\n\nTime passed the way time does—sometimes rushing, sometimes crawling, but always moving forward. They changed jobs, moved apartments, lost loved ones, gained new friends. Their bodies aged slightly, their faces gained small lines that spoke of laughter and worry in equal measure.\n\nBut through it all, they held hands.\n\nLiterally and metaphorically. Through hospital waiting rooms and celebration dinners. Through arguments and reconciliations. Through moments of profound joy and profound grief.\n\nThe excitement of newness had softened years ago into something deeper and steadier. Holding hands meant more than romance—it meant reassurance. It meant, "I'm still here. We're still here."\n\nThey learned each other's rhythms completely. Nickky could tell by the sound of Eway's footsteps whether she'd had a good day. Eway could read his mood by how he opened the refrigerator. They had developed their own language—glances that communicated entire paragraphs, touches that said what words couldn't.\n\nSilences between them were never empty. They were full of shared history, of understanding that didn't require explanation.\n\nTime tested them, certainly. There were moments when life's pressures made them forget to nurture what they had built. Moments when they took each other for granted, assuming love would survive without attention. But they always noticed, always course-corrected, always returned to each other.\n\nEvery shared memory added another layer to their bond. The trip to the beach where they got hopelessly lost and laughed about it for years. The Christmas when Nickky proposed with a ring hidden in a book, knowing she would find it eventually. The dog they adopted together, then mourned together years later. The apartment they finally bought, painting walls in colors that felt like them.\n\nLove didn't fade—it deepened. Like a river carving canyons over centuries, patient and persistent.\n\nThey realized that lasting love isn't loud. It's consistent. It's showing up, day after day, year after year, choosing the same person through every season of life.\n\nOn their ninth anniversary, they returned to the garden where they first met. The bench had been replaced, but the roses remained. Eway leaned her head on Nickky's shoulder as they watched students hurry past, just as they once had.\n\n"Would you do it all again?" she asked. "Knowing everything? The hard parts too?"\n\nNickky kissed the top of her head. "Every single moment. Because every hard part led me here. Led me to you. And you're worth all of it."\n\nIn that moment, surrounded by roses and memories, they held hands—just as they had on that first ordinary afternoon, just as they would for all the years to come.` },
+                { title: "13 · Still Choosing You", content: `On their tenth anniversary, they returned to the university garden where it all began.\n\nThe bench was still there, though weathered now. The roses still bloomed, tended by new generations of volunteers. Students hurried past, unaware that two people sitting quietly had once been strangers here too.\n\n"I was so nervous that day," Eway admitted. "When you first came over to talk to me."\n\n"Really? You seemed so calm."\n\n"I learned to seem calm. Inside, I was terrified. But something about you made me want to take the risk."\n\nNickky squeezed her hand. "Best risk I ever took."\n\nThey sat in comfortable silence, watching the afternoon sun filter through the same acacia tree that had watched their first meeting.\n\nEvery day, they realized, was a choice. And every day, for ten years, they had chosen each other. Even when things weren't perfect. Even when emotions felt complicated. Even when life demanded attention elsewhere.\n\nLove wasn't accidental anymore—it was intentional. Deliberate. A conscious decision renewed each morning.\n\n"I choose you," Eway said quietly. "Today, tomorrow, always."\n\n"I choose you too," Nickky replied. "Still. After everything. Still you."\n\nThat night, they celebrated with a simple dinner at their favorite restaurant, then walked home through streets that had become familiar over years of shared life. They talked about the decade behind them and the decades ahead. They laughed about memories and dreamed about futures.\n\nTen years, and they still found each other interesting. Still reached for each other in sleep. Still said "I love you" before hanging up the phone, even if they would see each other in an hour.\n\nStill choosing. Still together. Still in love.\n\nLater that evening, Nickky handed Eway a small box. Inside was a simple silver bracelet engraved with words: *"Still choosing you. Always."*\n\nEway slipped it onto her wrist, tears glistening in her eyes. "Every day," she whispered. "I'll choose you every day."\n\nThey held each other as the city lights twinkled outside their window, grateful for ten years of choices, and hopeful for all the choices still to come.` },
+                { title: "14 · The Language of Care", content: `By their twelfth year together, they had mastered something many couples never learn—the language of care.\n\nIt showed in a thousand small ways.\n\nWhen Nickky had a headache, Eway knew exactly which medication to bring and how much light to dim. When Eway felt anxious about a presentation, Nickky knew to review her slides without being asked, offering quiet confidence in her abilities.\n\nThey had learned each other's dialects of love. Nickky showed care through action—fixing things, planning ahead, removing obstacles from Eway's path. Eway showed care through attention—noticing when he seemed tired, remembering things he mentioned months ago, creating space for him to be vulnerable.\n\n"You okay?" had become unnecessary. They simply knew.\n\nOne evening, Eway came home to find Nickky had reorganized their entire kitchen. Not because she had asked, but because she had mentioned weeks ago that the current arrangement frustrated her. He had remembered. He had acted.\n\n"How did I get so lucky?" she asked, wrapping her arms around him from behind.\n\n"I'm the lucky one," he replied, turning to face her. "I get to love you every day. That's not luck—that's grace."\n\nCare became their shared language, spoken fluently after years of practice. Through listening, respect, and understanding. Through noticing, remembering, acting.\n\nThey didn't need grand declarations. They had something better—a lifetime of small kindnesses that added up to something extraordinary.\n\nWhen Nickky's mother fell ill, Eway quietly arranged for meals to be delivered to the hospital, coordinated with doctors, and made sure Nickky had everything he needed without ever being asked. When Eway's best friend moved away, Nickky planned a surprise weekend getaway to help ease the loneliness.\n\nTheir care extended beyond each other, into the world around them. They cared for their neighbors, their community, their family. And in doing so, they multiplied the love they had found.\n\nOne night, their niece asked them, "How do you stay so in love after all these years?"\n\nEway and Nickky looked at each other and smiled.\n\n"Practice," Nickky said.\n\n"Attention," Eway added. "And remembering that love is a verb. It's what you do, not just what you feel."\n\nThe niece wrote that down in her journal. Years later, she would understand exactly what they meant.` },
+                { title: "15 · A Love That Waits", content: `Children came into their lives in the eighth year of marriage—not through birth, but through the beautiful chaos of adoption. Two siblings who needed a home, who arrived with trauma and fear and slowly, over years, learned to trust.\n\nThose years tested their patience in ways nothing else had.\n\nThere were nights when the younger one woke screaming from nightmares, and Nickky would sit beside her bed for hours, singing softly until she fell asleep again. There were days when the older one pushed them away with both hands, convinced he would be abandoned again, and Eway would hold steady through the storm, never wavering in her presence.\n\nLove taught them patience. It didn't rush growth or demand perfection. It waited, trusted, and believed.\n\n"You're doing so well," Nickky would tell his son after a difficult day. "I'm proud of you for trying."\n\n"You're safe here," Eway would whisper to her daughter during night terrors. "You're home now. You're home."\n\nThe children healed slowly, in their own time. And as they healed, they taught their parents new dimensions of love—love that sacrifices without counting cost, love that waits without guarantees, love that gives without expecting return.\n\nThrough tantrums and tears, through breakthroughs and celebrations, through every exhausting, beautiful moment—they waited. They stayed. They loved.\n\nAnd eventually, the children believed it. Believed they were home to stay. Believed they were loved without condition.\n\nThat was the greatest gift their love ever gave—not to each other, but to two small humans who learned, through patient devotion, that some love actually lasts.\n\nYears later, at their daughter's college graduation, she hugged them both tightly and whispered, "Thank you for never giving up on me."\n\nEway cried. Nickky held her hand. And in that moment, every sleepless night, every difficult day, every moment of patient waiting became absolutely worth it.\n\nThe greatest love, they realized, isn't always the love between two people. Sometimes it's the love they create together and pour into others.` },
+                { title: "16 · Built on Trust", content: `Through fifteen years together, trust had become the foundation of everything.\n\nIt didn't appear instantly—it was built slowly, carefully, sincerely. Through countless moments of consistency. Through promises kept and apologies offered when promises were broken. Through transparency that became as natural as breathing.\n\nBabi Nickky understood that trust meant being consistent even when no one was watching. He showed Baby Eway that his words and actions always matched. Promises were not spoken lightly, and when they were made, they were honored.\n\nBaby Eway trusted Nickky not because he was perfect, but because he was honest. She felt safe sharing her thoughts, knowing they would be respected. There was no fear of being misunderstood or dismissed. Trust became the quiet confidence that love would not suddenly disappear.\n\nThey protected each other's hearts intentionally. Jealousy had no space because reassurance was always present. Transparency became natural, not forced.\n\nEven when difficult conversations arose—and they still did, after all these years—they spoke from a place of trust. Assuming good intentions. Giving benefit of the doubt. Remembering that they were on the same team.\n\nTrust turned their love into something solid—something unshakable.\n\nOne evening, a friend asked Eway, "Aren't you ever worried? About him, about the future, about everything that could go wrong?"\n\nEway smiled and shook her head. "I used to worry about everything. But with Nickky, I learned that worry is just fear pretending to be useful. Trust is choosing peace instead."\n\nIn a world full of uncertainty, they became certain of each other. And that certainty allowed their love to breathe, grow, and last through every season life brought.\n\nWhen Nickky traveled for work, Eway never questioned his faithfulness. When Eway spent time with friends, Nickky never needed updates or reassurance. They had built something so strong that absence only made them appreciate each other more.\n\nTrust wasn't just the absence of doubt—it was the presence of peace. The knowledge that no matter what happened, they would face it together. The certainty that their love was built to last.\n\nAnd it did. Through fifteen years, through fifty, through all the moments that tested and proved that trust was the strongest foundation love could have.` },
+                { title: "17 · Laughing After Everything", content: `Even after all the challenges—the distance, the job losses, the parenting struggles, the health scares—laughter returned easily between them.\n\nIt lived in inside jokes that had accumulated over years. In playful teasing that never crossed into cruelty. In shared memories that only they found funny.\n\nBabi Nickky still loved the sound of Baby Eway's laughter—it reminded him why he fell in love in the first place. When she laughed freely, her whole face transformed. Lines appeared around her eyes, crinkling with joy. Her shoulders relaxed. She looked exactly like the girl in the garden, all those years ago.\n\nBaby Eway found joy in Nickky's smile, especially when it appeared after a hard day. He had always smiled with his whole face, but age had made it even more precious—a reminder that happiness still lived inside him, despite everything.\n\nTheir laughter wasn't about ignoring pain. It was about choosing joy despite it.\n\nAfter a particularly difficult week—teenage drama with their son, stress at work for both of them—they found themselves collapsed on the couch, exhausted. Then Nickky imitated the face their cat had made earlier, and suddenly they were both laughing so hard they couldn't breathe.\n\n"We're ridiculous," Eway gasped between laughs.\n\n"Ridiculously in love," Nickky corrected, still laughing.\n\nThey learned that love should feel light sometimes. That happiness doesn't disappear just because life is difficult. Laughter became their reminder that love still lived strongly between them, no matter what they faced.\n\nTogether, they laughed not because everything was perfect, but because they were together. And that made all the difference.\n\nYears later, when their grandchildren asked what the secret to a long marriage was, Nickky didn't hesitate.\n\n"Laugh together," he said. "Every single day. Find something to laugh about. Even when things are hard—especially when things are hard. Laughter is love's favorite language."\n\nThe grandchildren nodded, not fully understanding yet. But one day, they would. One day, they would find someone who made them laugh the way their grandparents laughed—freely, fully, with their whole hearts.` },
+                { title: "18 · Safe Even in Silence", content: `Twenty years together taught them something profound about silence.\n\nIn their early days, silence had felt uncomfortable—something to fill, to avoid, to escape. But now, silence between them never felt awkward or empty. It felt peaceful.\n\nThey learned to exist together without needing constant conversation.\n\nWeekend mornings often found them in the same room, doing different things. Nickky reading the newspaper, Eway tending her plants. No words exchanged for an hour, sometimes two. But the silence wasn't empty—it was full of presence. Full of comfort. Full of love that didn't need constant proof.\n\nSilence became another form of communication. It meant understanding. It meant comfort. It meant trust.\n\nWhen Eway's mother passed away, Nickky sat with her for hours without speaking. He didn't try to find the right words—there were no right words. He simply stayed, his presence a steady anchor in her grief. The silence said what words couldn't: *I'm here. I'm not leaving. You're not alone.*\n\nWhen Nickky received news that an old friend had died unexpectedly, Eway held him while he cried, then sat with him through the evening, not filling the space with meaningless chatter. She understood that sometimes grief needed silence to breathe.\n\nSitting together quietly felt just as intimate as speaking heartfelt words. In those moments, they realized that love didn't need proof. It simply existed. Being together was enough.\n\nOne evening, watching the sunset from their porch, they sat in complete silence for nearly an hour. When the last colors faded from the sky, Eway turned to Nickky.\n\n"What were you thinking about?" she asked.\n\nHe smiled. "How grateful I am for this. For you. For us. For silence that feels like home."\n\nShe nodded, understanding completely. Because she had been thinking the same thing.\n\nIn a world that never stopped talking, they had found someone they could be silent with. And that, they knew, was one of the greatest gifts love could give.` },
+                { title: "19 · Choosing Kindness Always", content: `Through twenty-five years together, kindness remained their north star.\n\nThey had learned early that love wasn't about winning arguments. It was about protecting each other's hearts. Even when emotions ran high, kindness remained. And that kindness kept love safe.\n\nWhen disagreements arose—and they still did, because they were human—they chose gentle words over harsh ones. Respect over pride. Understanding over assumptions.\n\n"You're upset," Nickky would say during a heated moment. "Let's pause. I want to hear you, but I can't when we're both defensive."\n\n"I need you to understand why this hurts me," Eway would say, her voice soft even when frustrated. "Can I explain without you interrupting?"\n\nThey had learned, through years of practice, that kindness wasn't weakness. It was wisdom. It was choosing connection over being right. It was remembering, even in conflict, that they loved each other more than they loved winning.\n\nKindness became their rule, especially during difficult moments. And that rule protected them from the small cruelties that erode love over time—the sarcastic comments, the dismissive gestures, the silent treatments.\n\nInstead, they built a habit of grace. Of assuming the best. Of apologizing quickly and forgiving freely.\n\nTheir children grew up watching this kindness, learning from it, carrying it into their own relationships. The legacy of love extended beyond just the two of them.\n\nOne day, their daughter asked, "How do you stay so kind to each other after all these years? Don't you ever just want to be mean?"\n\nEway laughed softly. "Sometimes. But then I remember that the person I'm arguing with is the person I love most in the world. And being mean might win the argument, but it would lose something much more important."\n\nNickky added, "Kindness is a choice. Every single time. And we've chosen it so often that now it's just who we are."\n\nTheir daughter hugged them both, grateful for the example they set. And years later, when she found her own love, she carried that lesson with her—choosing kindness, always.` },
+                { title: "20 · Loving Without Conditions", content: `By their thirtieth anniversary, they had proven something rare and beautiful.\n\nLove didn't depend on moods, success, or perfection. They loved each other on good days and bad days. In strength and in weakness. When they were proud of each other and when they were disappointed. When everything made sense and when nothing did.\n\nUnconditional love meant staying when it was easier to leave. And they stayed—always.\n\nEway went through a period of deep depression in their twenty-second year. For months, she withdrew, struggled to find joy, questioned whether she was still the person Nickky had married. Some days she could barely get out of bed.\n\nNickky didn't waver. He brought her tea. He held her when she cried. He reminded her, again and again, that his love wasn't conditional on her happiness.\n\n"You don't have to be okay for me to love you," he told her. "You just have to be here. That's enough."\n\nWhen Nickky's business failed in their twenty-fifth year, taking most of their savings with it, he expected Eway to be angry, disappointed, distant. Instead, she held him while he grieved.\n\n"We still have each other," she said simply. "We still have our health. We'll figure out the rest together."\n\nUnconditional love meant staying when it was easier to leave. And they stayed—always.\n\nThrough every high and low, through every triumph and failure, through every season of life, they loved without conditions. Not perfectly, but faithfully. Not because it was easy, but because they had chosen, years ago, to build something that could withstand anything.\n\nOn their thirtieth anniversary, surrounded by family and friends, they renewed their vows. But instead of traditional promises, they wrote their own.\n\n"I promise to love you on your strongest days and your weakest ones," Nickky read from his heart. "I promise to stay when staying is hard. I promise that nothing you do could ever make me stop loving you."\n\nEway's voice trembled with emotion as she responded: "I promise to be your home, your peace, your constant. I promise to choose you every day, not because it's easy, but because you're you. And you're everything."\n\nTheir children cried. Their friends applauded. And Nickky and Eway held each other, knowing that thirty years of unconditional love was just the beginning.` },
+                { title: "21 · Home Is You", content: `One evening, after forty years together, they sat on their porch watching the sunset.\n\nTheir children were grown, living their own lives in different cities. The house was quiet in ways it hadn't been for decades. Retirement had given them time—endless, luxurious time—to simply be together.\n\n"I was thinking today," Eway said, her voice soft with age, "about all the places we've lived. All the apartments and houses. And you know what I realized?"\n\n"What's that?"\n\n"Home was never any of them. Home was always you."\n\nNickky turned to look at her—at the woman whose hair had gone silver, whose face held decades of laughter and tears, whose hand still fit perfectly in his.\n\n"Same for me," he said quietly. "Wherever you are, that's home."\n\nHome stopped being a place decades ago. It became a person. Wherever they were, if they were together, they were home.\n\nThey had learned this gradually, over years of moving and traveling and temporary separations. The physical spaces changed, but the feeling remained constant. Home was in the way Eway made coffee exactly the way he liked it. Home was in the sound of Nickky's footsteps approaching the door. Home was in shared meals, shared silences, shared dreams.\n\nNickky felt grounded beside Eway. Eway felt complete beside Nickky. Love made everything feel familiar and safe, no matter where life took them.\n\nThat night, as they prepared for bed, Eway paused at the bedroom door.\n\n"Thank you," she said simply.\n\n"For what?"\n\n"For being my home. For forty years of making everywhere we've lived feel like exactly where I belong."\n\nNickky crossed the room and took her in his arms. "Thank you for the same. For being the place my heart always returns to."\n\nThey fell asleep that night the way they had for forty years—holding each other, safe in the knowledge that home wasn't a place. It was a person. And they had found their home in each other.` },
+                { title: "22 · Standing Strong Together", content: `The health scare came in their forty-fifth year.\n\nNickky collapsed one morning while gardening—a heart attack that came without warning, without mercy. Eway found him on the ground, called for help, rode in the ambulance with her hand gripping his even as the paramedics worked around her.\n\nIn the hospital, she didn't leave. For three days, she sat beside his bed, sleeping in short fits, eating only when their children forced her. She held his hand and talked to him, even when he couldn't respond.\n\n"You're not leaving me," she whispered. "Not yet. We still have too much to do."\n\nWhen he finally woke, weak but alive, his first words were: "You're still here."\n\n"Always," she said, tears streaming down her face. "Where else would I be?"\n\nThe recovery was long and difficult. Nickky had to learn to slow down, to accept help, to let others carry some of the weight he had carried alone for decades. Eway became his caretaker, his cheerleader, his constant companion.\n\nThey faced the challenge hand in hand, the way they had faced everything for nearly half a century. Problems felt smaller because they faced them together. Love gave them courage.\n\nWhen Nickky finally regained his strength enough to garden again, Eway sat on the porch and watched him, grateful for every moment. For every ordinary day they still had together.\n\nLater that evening, Nickky took her hand. "I was scared," he admitted. "Not of dying. Of leaving you alone."\n\nEway squeezed his hand. "You didn't. And you're not going to anytime soon. We've got too many sunsets left to watch."\n\nThey sat together on the porch, watching the sky turn gold and pink and purple. The health scare had reminded them of something important—that every moment was precious, that every day together was a gift.\n\nNo matter what came, they stood as one. And that was enough.` },
+                { title: "23 · A Love That Endures", content: `Fifty years.\n\nHalf a century since that afternoon in the garden when two strangers noticed each other and something quietly awakened. Fifty years of choosing each other, day after day, through every season life could offer.\n\nTheir children organized a celebration—a party with friends and family, with photos displayed on tables showing their journey from young lovers to silver-haired companions. Grandchildren ran around their feet, bringing energy and chaos that felt beautiful and exhausting in equal measure.\n\n"Fifty years," Eway said that evening, when they were finally alone. "Can you believe it?"\n\nNickky smiled, his eyes crinkling the way they always had. "I can believe it. I can believe anything with you."\n\nTime passed, but love remained steady. Not loud. Not dramatic. Just real.\n\nThey had outlasted friends whose marriages had crumbled. They had weathered storms that would have broken lesser bonds. They had grown together, changed together, aged together.\n\nTheir love endured because it was built on patience, effort, and devotion. Because they had learned, early on, that love isn't a feeling you fall into—it's a choice you make, again and again, until it becomes who you are.\n\nFifty years. And still, when Eway walked into a room, Nickky's eyes found her. Still, when Nickky spoke, Eway listened as if hearing him for the first time.\n\nA love that endures isn't flashy. It's faithful. And theirs had been faithful for half a century.\n\nAt the celebration, their grandson asked, "What's the secret to loving someone for fifty years?"\n\nNickky thought for a moment. "You don't love them for fifty years all at once. You love them one day at a time. And after enough days, you look up and realize you've spent a lifetime together."\n\nEway added, "And you'd do it all again. Every single day."\n\nTheir grandson wrote that down. Fifty years later, at his own fiftieth anniversary, he would remember those words and smile.` },
+                { title: "24 · Forever Feels Gentle", content: `In their final years together, forever stopped being a concept and became something they lived.\n\nThey slowed down, accepting the limitations of aging bodies. Mornings started later. Evenings ended earlier. They traveled less but appreciated more—the garden they had tended for decades, the friends who still visited, the simple pleasure of being alive together.\n\nNickky's hands weren't as steady anymore, so Eway helped him with tasks that required precision. Eway's memory sometimes faltered, so Nickky gently reminded her of names and dates. They had become caretakers for each other, and somehow even that felt romantic.\n\n"Do you ever wish we had done more?" Eway asked one evening, watching the sunset from their porch. "Traveled more, accomplished more, seen more of the world?"\n\nNickky considered the question carefully. "No," he said finally. "We did exactly what we needed to do. We built a life. We raised children who are kind. We loved each other every day. What more could anyone want?"\n\nForever didn't feel heavy or uncertain. It felt calm. It felt sure.\n\nLove wasn't scary. It was comforting—the most comforting thing they had ever known.\n\nThey spoke often about death, without fear. They had made peace with the inevitable, knowing that one of them would eventually have to continue alone. But they didn't dwell on it. They focused instead on the time they had, on the beauty of each ordinary day.\n\n"I'll find you in the next life," Nickky told her once. "If there is one. I'll find you."\n\n"And I'll be waiting," Eway replied. "Probably in a garden somewhere."\n\nThey laughed at that, imagining themselves young again, meeting on a garden bench in whatever came next. It wasn't a sad thought—it was comforting. A promise that even forever wasn't the end.\n\nThat night, they held hands as they fell asleep, grateful for another day together, another sunset watched, another moment of forever lived.` },
+                { title: "25 · Always, In Every Way", content: `She went first.\n\nPeacefully, in her sleep, three weeks before their fifty-seventh anniversary. Their daughter found her in the morning, still warm, a slight smile on her face as if she had simply drifted into a pleasant dream and decided not to return.\n\nNickky held her hand for hours, not crying, just remembering. Fifty-seven years of memories flooded through him—the girl in the garden, the midnight conversations, the wedding day, the children, the struggles, the joys, the ordinary moments that had added up to an extraordinary life.\n\n"You were my everything," he whispered. "My whole heart. My home."\n\nThe funeral was filled with people whose lives they had touched—children, grandchildren, friends, even great-grandchildren who would grow up hearing stories about the love that started it all.\n\nTheir son spoke beautifully about what his parents had taught him about love—that it's patient, that it's kind, that it endures all things. Their daughter shared memories of growing up in a home filled with laughter and safety.\n\nNickky sat in the front row, holding the hand of their oldest grandchild, drawing strength from the family they had built together.\n\nThat night, alone in their house for the first time in fifty-seven years, he spoke to her.\n\n"I don't know how to do this without you," he admitted to the empty room. "But I'll try. For our kids. For our grandkids. For you. I'll try to keep living the way you'd want me to."\n\nHe lasted another three years—long enough to see another grandchild graduate, long enough to hold his first great-grandchild, long enough to tell the story of their love so many times that everyone in the family could recite it.\n\nWhen his time came, also peacefully, also in his sleep, their children found him with a photo of Eway clutched to his chest. The photo was from their early days—the garden, the bench, two young people just beginning to discover what they would become.\n\nThey buried him beside her, under a tree that would bloom each spring, providing shade for generations to come.\n\nOn their headstone, simple words that captured everything:\n\n*Babi Nickky and Baby Eway*\n*Always, in every way*\n\nTheir love story didn't end. It continued in their children, who loved more deeply because of what they had witnessed. It continued in their grandchildren, who grew up knowing what real love looked like. It continued in everyone who heard their story and believed, just for a moment, that such love was possible.\n\nBecause they had been on the same page from the very beginning. Not perfectly. Not without struggle. But faithfully, deeply, unconditionally.\n\nAlways, in every way.` }
+            ];
+
+            // ---------- state ----------
+            let currentChapter = 0;
+            let pupCount = 0;
+
+            // DOM elements
+            const bookPages = document.getElementById('bookPages');
+            const chapterNav = document.getElementById('chapterNav');
+            const pupCountDisplay = document.getElementById('pupCountDisplay');
+            const pupClick = document.getElementById('pupClick');
+            const pupHeartBadge = document.getElementById('pupHeartBadge');
+            const heartContainer = document.getElementById('heartContainer');
+            const homeBtn = document.getElementById('homeBtn');
+            const prevChapter = document.getElementById('prevChapter');
+            const nextChapter = document.getElementById('nextChapter');
+            const randomHeart = document.getElementById('randomHeart');
+            const lastChapterShortcut = document.getElementById('lastChapterShortcut');
+            const startBtn = document.getElementById('startButton');
+            const bookSection = document.getElementById('bookSection');
+            const kissContainer = document.getElementById('kissContainer');
+            const floatingBg = document.getElementById('floatingBg');
+
+            // ---------- floating background elements ----------
+            const symbols = ['❤️', '🧡', '💖', '💘', '💝', '🐶', '🐕', '💋', '😘', '😽', '💞', '💓', '🐾'];
+            for (let i = 0; i < 30; i++) {
+                const el = document.createElement('div');
+                const randSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+                el.innerText = randSymbol;
+                
+                if (randSymbol.includes('🐶') || randSymbol.includes('🐕') || randSymbol.includes('🐾')) {
+                    el.className = 'float-pup';
+                } else if (randSymbol.includes('💋') || randSymbol.includes('😘') || randSymbol.includes('😽')) {
+                    el.className = 'float-kiss';
+                } else {
+                    el.className = 'float-heart';
+                }
+                
+                el.style.left = Math.random() * 100 + '%';
+                el.style.top = Math.random() * 100 + '%';
+                el.style.animationDelay = (Math.random() * 10) + 's';
+                el.style.animationDuration = (15 + Math.random() * 20) + 's';
+                el.style.fontSize = (1.5 + Math.random() * 3) + 'rem';
+                el.style.opacity = (0.2 + Math.random() * 0.3);
+                
+                floatingBg.appendChild(el);
+            }
+
+            // ---------- render chapters ----------
+            function renderChapters() {
+                let htmlStr = '';
+                chapters.forEach((ch, idx) => {
+                    const activeClass = idx === currentChapter ? 'active-chapter' : '';
+                    htmlStr += `<div id="chapter-${idx}" class="chapter ${activeClass}">
+                        <h2>${ch.title}</h2>
+                        <div class="chapter-content">${ch.content.replace(/\n/g, '<br>')}</div>
+                    </div>`;
+                });
+                bookPages.innerHTML = htmlStr;
+
+                let dotsHtml = '';
+                chapters.forEach((_, idx) => {
+                    const activeDot = idx === currentChapter ? 'active' : '';
+                    dotsHtml += `<div class="chapter-dot ${activeDot}" data-chapter="${idx}">${idx+1}</div>`;
+                });
+                chapterNav.innerHTML = dotsHtml;
+
+                document.querySelectorAll('.chapter-dot').forEach(dot => {
+                    dot.addEventListener('click', (e) => {
+                        const chapterIdx = parseInt(e.target.dataset.chapter, 10);
+                        goToChapter(chapterIdx);
+                    });
+                });
+                bookPages.scrollTop = 0;
+            }
+
+            function goToChapter(idx) {
+                if (idx < 0) idx = 0;
+                if (idx >= chapters.length) idx = chapters.length - 1;
+                if (idx === currentChapter) return;
+
+                document.querySelectorAll('.chapter').forEach((ch, i) => {
+                    if (i === idx) ch.classList.add('active-chapter');
+                    else ch.classList.remove('active-chapter');
+                });
+
+                document.querySelectorAll('.chapter-dot').forEach((dot, i) => {
+                    if (i === idx) dot.classList.add('active');
+                    else dot.classList.remove('active');
+                });
+
+                currentChapter = idx;
+                bookPages.scrollTop = 0;
+            }
+
+            // heart effects
+            function createFloatingHeart(emoji = '❤️', x, y) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerText = emoji;
+                heart.style.left = (x || Math.random() * window.innerWidth) + 'px';
+                heart.style.top = (y || window.innerHeight - 50) + 'px';
+                heart.style.position = 'fixed';
+                heartContainer.appendChild(heart);
+                setTimeout(() => heart.remove(), 4000);
+            }
+
+            function createHeartTrail(event) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-trail';
+                heart.innerText = '🐶❤️';
+                heart.style.left = (event.clientX - 20) + 'px';
+                heart.style.top = (event.clientY - 20) + 'px';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1300);
+            }
+
+            function incrementPup() {
+                pupCount++;
+                pupCountDisplay.innerText = pupCount;
+                pupHeartBadge.style.animation = 'none';
+                pupHeartBadge.offsetHeight;
+                pupHeartBadge.style.animation = 'subtleWiggle 0.3s 2';
+
+                const rect = pupClick.getBoundingClientRect();
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(() => {
+                        createFloatingHeart(i % 2 === 0 ? '🐾' : '❤️', rect.left + 30 + (i * 5), rect.top - 10);
+                    }, i * 70);
+                }
+            }
+
+            // kiss effect
+            function createKissEffect(event) {
+                const rect = startBtn.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                const kissEmojis = ['💋', '😘', '😗', '😙', '😚', '💏', '👄', '❤️', '🧡', '💖', '🐶', '🐾', '💕', '💞', '💓'];
+                
+                for (let i = 0; i < 36; i++) {
+                    const kiss = document.createElement('div');
+                    kiss.className = 'kiss-emoji';
+                    const randomKiss = kissEmojis[Math.floor(Math.random() * kissEmojis.length)];
+                    kiss.innerText = randomKiss;
+                    
+                    const angle = (i * 12) + Math.random() * 20;
+                    const distance = 80 + Math.random() * 200;
+                    const xOffset = Math.cos(angle * Math.PI / 180) * distance;
+                    const yOffset = Math.sin(angle * Math.PI / 180) * distance - 150;
+                    
+                    kiss.style.left = (centerX + xOffset - 30) + 'px';
+                    kiss.style.top = (centerY + yOffset - 30) + 'px';
+                    kiss.style.animation = `kissFloat ${1.5 + Math.random() * 1}s ease-out forwards`;
+                    kiss.style.fontSize = (2 + Math.random() * 3) + 'rem';
+                    
+                    kissContainer.appendChild(kiss);
+                    
+                    setTimeout(() => {
+                        if (kiss.parentNode) kiss.remove();
+                    }, 2600);
+                }
+
+                for (let j = 0; j < 12; j++) {
+                    setTimeout(() => {
+                        const extra = document.createElement('div');
+                        extra.className = 'kiss-emoji';
+                        extra.innerText = '💖';
+                        extra.style.left = Math.random() * window.innerWidth + 'px';
+                        extra.style.top = (window.innerHeight - 50) + 'px';
+                        extra.style.animation = 'kissFloat 2s ease-out forwards';
+                        extra.style.fontSize = '2.8rem';
+                        kissContainer.appendChild(extra);
+                        setTimeout(() => extra.remove(), 2500);
+                    }, j * 60);
+                }
+            }
+
+            // ---------- event listeners ----------
+            startBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                createKissEffect(e);
+                startBtn.style.transform = 'scale(0.95)';
+                setTimeout(() => startBtn.style.transform = '', 200);
+                
+                // smooth scroll to book section
+                bookSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            pupClick.addEventListener('click', (e) => {
+                e.stopPropagation();
+                incrementPup();
+                createHeartTrail(e);
+            });
+
+            randomHeart.addEventListener('click', () => {
+                for (let i = 0; i < 12; i++) {
+                    setTimeout(() => {
+                        createFloatingHeart(i % 3 === 0 ? '💞' : '🐕', Math.random() * window.innerWidth, Math.random() * window.innerHeight);
+                    }, i * 90);
+                }
+            });
+
+            homeBtn.addEventListener('click', () => goToChapter(0));
+            lastChapterShortcut.addEventListener('click', () => goToChapter(chapters.length - 1));
+            prevChapter.addEventListener('click', () => goToChapter(currentChapter - 1));
+            nextChapter.addEventListener('click', () => goToChapter(currentChapter + 1));
+
+            bookPages.addEventListener('dblclick', (e) => {
+                createHeartTrail(e);
+                incrementPup();
+            });
+
+            startBtn.addEventListener('mouseenter', () => {
+                for (let i = 0; i < 4; i++) {
+                    const mini = document.createElement('div');
+                    mini.className = 'kiss-emoji';
+                    mini.innerText = '❤️';
+                    mini.style.left = (startBtn.getBoundingClientRect().left + 30 + i * 40) + 'px';
+                    mini.style.top = (startBtn.getBoundingClientRect().top - 20) + 'px';
+                    mini.style.animation = 'kissFloat 1.5s ease-out forwards';
+                    mini.style.fontSize = '1.8rem';
+                    kissContainer.appendChild(mini);
+                    setTimeout(() => mini.remove(), 1500);
+                }
+            });
+
+            document.querySelector('.home-card').addEventListener('dblclick', (e) => {
+                for (let i = 0; i < 8; i++) {
+                    const kiss = document.createElement('div');
+                    kiss.className = 'kiss-emoji';
+                    kiss.innerText = '😽';
+                    kiss.style.left = (e.clientX - 30 + (Math.random() * 60 - 30)) + 'px';
+                    kiss.style.top = (e.clientY - 30 + (Math.random() * 60 - 30)) + 'px';
+                    kiss.style.animation = `kissFloat ${1.2 + Math.random()}s ease-out forwards`;
+                    kissContainer.appendChild(kiss);
+                    setTimeout(() => kiss.remove(), 2000);
+                }
+            });
+
+            // initial render
+            renderChapters();
+            pupCountDisplay.innerText = pupCount;
+        })();
+    </script>
+</body>
+</html>
